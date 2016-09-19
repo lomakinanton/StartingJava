@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class Calculator {
 	
 	public static void main(String[] args) {
-		new Form1();
+	Form1 f =	new Form1();
 		
 	}
 }
