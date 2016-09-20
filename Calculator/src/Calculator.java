@@ -45,7 +45,6 @@ class Form1 extends JFrame{
 		JPanel panel0 = new JPanel(); //Общая панель 
 		JPanel panel1 = new JPanel(); //это общая панель кнопок
 		
-		
 		JPanel panelNubmers1= new JPanel(); //Для кнопок действий
 		JPanel panelNubmers2= new JPanel(); //789
 		JPanel panelNubmers3= new JPanel(); //456
@@ -54,8 +53,7 @@ class Form1 extends JFrame{
 		
 		panel0.setLayout(new BorderLayout(0, 0));
 		panel1.setLayout(new GridLayout(5, 1, 0, 5));
-		
-		
+			
 		panelNubmers1.setLayout(new GridLayout(1, 5, 5, 0));
 		
 		panelNubmers1.add(buttonList.get(17));
