@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.EtchedBorder;
 
 
 
@@ -27,18 +29,22 @@ class Form1 extends JFrame{
 	
 	Form1() {
 		JLabel label = new JLabel("0");
-		Font f = new Font("Courier", Font.BOLD, 25);
+		Font f = new Font("Serif", Font.BOLD, 25);
 		label.setFont(f);
 		label.setHorizontalAlignment(JLabel.RIGHT);
-		label.setForeground(Color.BLACK);
-		label.setBackground(Color.WHITE);
 		label.setOpaque(true);
+		label.setBackground(new Color(225, 225, 225));
+		label.setForeground(new Color(64, 64, 64));
+		label.setBorder(new EtchedBorder());
+		label.setFont(new Font("Tahoma", Font.BOLD, 45));
+		
 						
 		ArrayList<JButton> buttonList = getButtonArray();
 		setButtonActions(buttonList, label);
 		
 		JPanel panel0 = new JPanel(); //Общая панель 
 		JPanel panel1 = new JPanel(); //это общая панель кнопок
+		
 		
 		JPanel panelNubmers1= new JPanel(); //Для кнопок действий
 		JPanel panelNubmers2= new JPanel(); //789
@@ -47,40 +53,50 @@ class Form1 extends JFrame{
 		JPanel panelNubmers5= new JPanel(); //,0=
 		
 		panel0.setLayout(new BorderLayout(0, 0));
-		panel1.setLayout(new GridLayout(5, 1, 0, 0));
+		panel1.setLayout(new GridLayout(5, 1, 0, 5));
 		
-		panelNubmers1.setLayout(new GridLayout(1, 5, 0, 0));
-		panelNubmers1.add(buttonList.get(10));
-		panelNubmers1.add(buttonList.get(11));
+		
+		panelNubmers1.setLayout(new GridLayout(1, 5, 5, 0));
+		
+		panelNubmers1.add(buttonList.get(17));
+		panelNubmers1.add(buttonList.get(16));
 		panelNubmers1.add(buttonList.get(12));
 		panelNubmers1.add(buttonList.get(13));
 		panelNubmers1.add(buttonList.get(15));
 		
-		panelNubmers2.setLayout(new GridLayout(1, 3, 0, 0));
+		panelNubmers2.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers2.add(buttonList.get(7));
 		panelNubmers2.add(buttonList.get(8));
 		panelNubmers2.add(buttonList.get(9));
+		panelNubmers2.add(buttonList.get(15));
 		
-		panelNubmers3.setLayout(new GridLayout(1, 3, 0, 0));
+		
+		panelNubmers3.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers3.add(buttonList.get(4));
 		panelNubmers3.add(buttonList.get(5));
 		panelNubmers3.add(buttonList.get(6));
+		panelNubmers3.add(buttonList.get(13));
 	
-		panelNubmers4.setLayout(new GridLayout(1, 3, 0, 0));
+		panelNubmers4.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers4.add(buttonList.get(1));
 		panelNubmers4.add(buttonList.get(2));
 		panelNubmers4.add(buttonList.get(3));
+		panelNubmers4.add(buttonList.get(12));
+		
 				
-		panelNubmers5.setLayout(new GridLayout(1, 3, 0, 0));
+		panelNubmers5.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers5.add(buttonList.get(14));
 		panelNubmers5.add(buttonList.get(0));
-		panelNubmers5.add(buttonList.get(16));
+		panelNubmers5.add(buttonList.get(10));
+		panelNubmers5.add(buttonList.get(11));
+		
 				
-		panel1.add(panelNubmers1);
+		
 		panel1.add(panelNubmers2);
 		panel1.add(panelNubmers3);
 		panel1.add(panelNubmers4);
 		panel1.add(panelNubmers5);
+		panel1.add(panelNubmers1);
 		
 		panel0.add(label, BorderLayout.NORTH);
 		panel0.add(panel1, BorderLayout.CENTER);
@@ -204,6 +220,16 @@ class Form1 extends JFrame{
 		list.add(new JButton("."));//14
 		list.add(new JButton("CE"));//15
 		list.add(new JButton("="));//16
+		list.add(new JButton("+/-"));//17
+		
+		for(JButton b: list){
+			b.setBackground(new Color(225, 225, 225));
+            b.setForeground(new Color(64, 64, 64));
+            b.setBorder(new EtchedBorder());
+            b.setFocusPainted(false);
+            b.setFont(new Font("Serif", Font.BOLD, 25));
+		}
+		
 		return list;
 	}
 	
