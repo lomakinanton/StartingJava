@@ -27,10 +27,14 @@ class Form1 extends JFrame{
 	protected int first=0;
 	protected int second=0;
 	
+	private float a=0;
+	private float b=0;
+	
 	Form1() {
 		JLabel label = new JLabel("0");
-		Font f = new Font("Serif", Font.BOLD, 25);
-		label.setFont(f);
+		
+		
+		
 		label.setHorizontalAlignment(JLabel.RIGHT);
 		label.setOpaque(true);
 		label.setBackground(new Color(225, 225, 225));
@@ -55,18 +59,17 @@ class Form1 extends JFrame{
 		panel1.setLayout(new GridLayout(5, 1, 0, 5));
 			
 		panelNubmers1.setLayout(new GridLayout(1, 5, 5, 0));
-		
-		panelNubmers1.add(buttonList.get(17));
-		panelNubmers1.add(buttonList.get(16));
-		panelNubmers1.add(buttonList.get(12));
-		panelNubmers1.add(buttonList.get(13));
 		panelNubmers1.add(buttonList.get(15));
+		panelNubmers1.add(buttonList.get(19));
+		panelNubmers1.add(buttonList.get(18));
+		panelNubmers1.add(buttonList.get(17));
+		
 		
 		panelNubmers2.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers2.add(buttonList.get(7));
 		panelNubmers2.add(buttonList.get(8));
 		panelNubmers2.add(buttonList.get(9));
-		panelNubmers2.add(buttonList.get(15));
+		panelNubmers2.add(buttonList.get(12));
 		
 		
 		panelNubmers3.setLayout(new GridLayout(1, 5, 5, 0));
@@ -79,22 +82,23 @@ class Form1 extends JFrame{
 		panelNubmers4.add(buttonList.get(1));
 		panelNubmers4.add(buttonList.get(2));
 		panelNubmers4.add(buttonList.get(3));
-		panelNubmers4.add(buttonList.get(12));
+		panelNubmers4.add(buttonList.get(11));
 		
 				
 		panelNubmers5.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers5.add(buttonList.get(14));
 		panelNubmers5.add(buttonList.get(0));
 		panelNubmers5.add(buttonList.get(10));
-		panelNubmers5.add(buttonList.get(11));
+		panelNubmers5.add(buttonList.get(16));
 		
 				
 		
+		panel1.add(panelNubmers1);
 		panel1.add(panelNubmers2);
 		panel1.add(panelNubmers3);
 		panel1.add(panelNubmers4);
 		panel1.add(panelNubmers5);
-		panel1.add(panelNubmers1);
+		
 		
 		panel0.add(label, BorderLayout.NORTH);
 		panel0.add(panel1, BorderLayout.CENTER);
@@ -170,13 +174,13 @@ class Form1 extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				String currentAction=null;
 				float result=0;
+				if(label.getText()=="0") return;
 				if(label.getText().contains("*")) currentAction="\\*";
 				if(label.getText().contains("+")) currentAction="\\+";
 				if(label.getText().contains("-")) currentAction="-";
 				if(label.getText().contains("/")) currentAction="/";
 				
 				String[] parts = label.getText().split(currentAction);
-				
 				try {
 					float a = new Float(parts[0]);
 					float b = new Float(parts[1]);
@@ -192,6 +196,7 @@ class Form1 extends JFrame{
 					if (result % 1 == 0) label.setText(Integer.toString((int) result));
 					else label.setText(String.valueOf(result));
 				} catch (Exception e2) {
+					
 				}
 				
 				
@@ -216,9 +221,11 @@ class Form1 extends JFrame{
 		list.add(new JButton("*"));	//12
 		list.add(new JButton("/"));	//13
 		list.add(new JButton("."));//14
-		list.add(new JButton("CE"));//15
+		list.add(new JButton("C"));//15
 		list.add(new JButton("="));//16
-		list.add(new JButton("+/-"));//17
+		list.add(new JButton("BS"));//17
+		list.add(new JButton("sqrt"));//18
+		list.add(new JButton("1/x"));//19
 		
 		for(JButton b: list){
 			b.setBackground(new Color(225, 225, 225));
