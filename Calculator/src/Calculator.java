@@ -141,7 +141,6 @@ class Form1 extends JFrame {
 				}
 			});
 		}
-
 		// Запятая
 		buttonList.get(14).addActionListener(new ActionListener() {
 			@Override
@@ -314,6 +313,5 @@ class Form1 extends JFrame {
 		currentAction = "";
 		actionIsDefined = false;
 		yText = "";
-
 	}
 }
