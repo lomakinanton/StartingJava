@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.AbstractBorder;
 import javax.swing.border.EtchedBorder;
 
 
@@ -17,18 +16,25 @@ import javax.swing.border.EtchedBorder;
 public class Calculator {
 	
 	public static void main(String[] args) {
-	Form1 f =	new Form1();
+	new Form1();
 		
 	}
 }
 
 class Form1 extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6086054613997912881L;
 	protected String action=null;
 	protected int first=0;
 	protected int second=0;
 	
-	private float a=0;
-	private float b=0;
+	private float x=0;
+	private float y=0;
+	private boolean actionIsDefined=false;
+	private String currentAction;
+	
 	
 	Form1() {
 		JLabel label = new JLabel("0");
@@ -128,6 +134,16 @@ class Form1 extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (label.getText()=="0") label.setText(b.getText());
 				else label.setText(label.getText()+b.getText());
+				if (!actionIsDefined) x=new Float(label.getText());
+				else {
+				
+				String[] parts = label.getText().split(currentAction);
+				y=new Float(parts[1]);
+					
+				}
+				
+				echo();
+				
 			}
 		});
 		}
@@ -141,21 +157,23 @@ class Form1 extends JFrame{
 				char ch = label.getText().charAt(label.getText().length()-1);
 				if (ch!='.') { 
 				if (!(label.getText().contains("*")) &&	!(label.getText().contains("+")) && !(label.getText().contains("-")) && !(label.getText().contains("/"))){
-					label.setText(label.getText()+b.getText());					
+					label.setText(label.getText()+b.getText());		
+					actionIsDefined=true;
+					updateCurrentAction(label);
+					echo();
 				}
 				}
 				}
 			});
 			}
+		
 		//Запятая 
 		buttonList.get(14).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				char ch = label.getText().charAt(label.getText().length()-1);
-				if ((ch!='*') && (ch!='/') && (ch!='+') & (ch!='-')){		
-				if (!(label.getText().contains("."))) {
-					label.setText(label.getText()+buttonList.get(14).getText());	
-				}
+				if ((ch!='*') && (ch!='/') && (ch!='+') && (ch!='-') && (ch!='.')){	
+					label.setText(label.getText()+buttonList.get(14).getText());
 				}
 			}
 		});
@@ -165,6 +183,11 @@ class Form1 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("0");
+				x=0;
+				y=0;
+				currentAction="";
+				actionIsDefined=false;
+				echo();
 			}
 		});
 		
@@ -172,33 +195,42 @@ class Form1 extends JFrame{
 		buttonList.get(16).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String currentAction=null;
-				float result=0;
-				if(label.getText()=="0") return;
-				if(label.getText().contains("*")) currentAction="\\*";
-				if(label.getText().contains("+")) currentAction="\\+";
-				if(label.getText().contains("-")) currentAction="-";
-				if(label.getText().contains("/")) currentAction="/";
 				
-				String[] parts = label.getText().split(currentAction);
+				float result=0;
+				
 				try {
-					float a = new Float(parts[0]);
-					float b = new Float(parts[1]);
-					if (b==0){
+					if (y==0){
 						label.setText("Zero devide!");
 						return;
 					}
-					if (currentAction=="\\*") result=a*b;
-					if (currentAction=="\\+") result=a+b;
-					if (currentAction=="-") result=a-b;
-					if (currentAction=="/") result=a/b;
+					if (currentAction=="\\*") result=x*y;
+					if (currentAction=="\\+") result=x+y;
+					if (currentAction=="-") result=x-y;
+					if (currentAction=="/") result=x/y;
 					
 					if (result % 1 == 0) label.setText(Integer.toString((int) result));
 					else label.setText(String.valueOf(result));
+					x=result;
+					currentAction="";
+					actionIsDefined=false;
+					
+					echo();
 				} catch (Exception e2) {
 					
 				}
-				
+			}
+		});
+		
+		
+		//+/-
+		buttonList.get(19).addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(!actionIsDefined) x=x*(-1);
+				if (x % 1 == 0) label.setText(Integer.toString((int) x));
+				else label.setText(String.valueOf(x));	
+				echo();
 				
 			}
 		});
@@ -225,7 +257,7 @@ class Form1 extends JFrame{
 		list.add(new JButton("="));//16
 		list.add(new JButton("BS"));//17
 		list.add(new JButton("sqrt"));//18
-		list.add(new JButton("1/x"));//19
+		list.add(new JButton("+/-"));//19
 		
 		for(JButton b: list){
 			b.setBackground(new Color(225, 225, 225));
@@ -237,5 +269,21 @@ class Form1 extends JFrame{
 		
 		return list;
 	}
+	
+	void echo(){
+		System.out.println("x:"+x);
+		System.out.println("y:"+y);
+		System.out.println("Ca:"+currentAction);
+		System.out.println("actionIsDefined:"+actionIsDefined);
+	}
+	
+	void updateCurrentAction(JLabel label){
+		if(label.getText()=="0") return;
+		if(label.getText().contains("*")) currentAction="\\*";
+		if(label.getText().contains("+")) currentAction="\\+";
+		if(label.getText().contains("-")) currentAction="-";
+		if(label.getText().contains("/")) currentAction="/";
+	}
+	
 	
 }
