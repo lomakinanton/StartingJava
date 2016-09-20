@@ -31,6 +31,7 @@ class Form1 extends JFrame{
 	protected int second=0;
 	
 	private float x=0;
+	private String yText="";
 	private float y=0;
 	private boolean actionIsDefined=false;
 	private String currentAction;
@@ -121,7 +122,7 @@ class Form1 extends JFrame{
 		
 		setBounds(150, 150, 300, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle("Калькулятор v1.0");
+		setTitle("Калькулятор v2.1");
 		setVisible(true);
 	}
 
@@ -132,13 +133,15 @@ class Form1 extends JFrame{
 		b.addActionListener(new ActionListener() {
 		@Override
 			public void actionPerformed(ActionEvent e) {
-				if (label.getText()=="0") label.setText(b.getText());
+			 	
+			if (label.getText()=="0") label.setText(b.getText());
 				else label.setText(label.getText()+b.getText());
 				if (!actionIsDefined) x=new Float(label.getText());
 				else {
 				
-				String[] parts = label.getText().split(currentAction);
-				y=new Float(parts[1]);
+				yText=yText+b.getText();
+					
+				y=new Float(yText);
 					
 				}
 				
@@ -156,7 +159,7 @@ class Form1 extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 				char ch = label.getText().charAt(label.getText().length()-1);
 				if (ch!='.') { 
-				if (!(label.getText().contains("*")) &&	!(label.getText().contains("+")) && !(label.getText().contains("-")) && !(label.getText().contains("/"))){
+				if (!actionIsDefined){
 					label.setText(label.getText()+b.getText());		
 					actionIsDefined=true;
 					updateCurrentAction(label);
@@ -174,6 +177,8 @@ class Form1 extends JFrame{
 				char ch = label.getText().charAt(label.getText().length()-1);
 				if ((ch!='*') && (ch!='/') && (ch!='+') && (ch!='-') && (ch!='.')){	
 					label.setText(label.getText()+buttonList.get(14).getText());
+					yText=yText+buttonList.get(14).getText();
+					echo();
 				}
 			}
 		});
@@ -183,20 +188,19 @@ class Form1 extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				label.setText("0");
-				x=0;
-				y=0;
-				currentAction="";
-				actionIsDefined=false;
+				clear();
 				echo();
 			}
 		});
 		
-		//Кнопка "=" Самое сложное
+		//Кнопка "=" 
 		buttonList.get(16).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(!actionIsDefined) return;
 				
 				float result=0;
+				y =new  Float(yText);
 				
 				try {
 					if (y==0){
@@ -211,9 +215,8 @@ class Form1 extends JFrame{
 					if (result % 1 == 0) label.setText(Integer.toString((int) result));
 					else label.setText(String.valueOf(result));
 					x=result;
-					currentAction="";
-					actionIsDefined=false;
-					
+					clear();
+					x=result;
 					echo();
 				} catch (Exception e2) {
 					
@@ -227,9 +230,26 @@ class Form1 extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String xt="";
+				String yt="";
+				
+				
 				if(!actionIsDefined) x=x*(-1);
-				if (x % 1 == 0) label.setText(Integer.toString((int) x));
-				else label.setText(String.valueOf(x));	
+				
+				else{
+					y=new Float(yText);
+					y=y*(-1);
+					yText=String.valueOf(y);
+				}
+				
+				if (x % 1 == 0) xt=Integer.toString((int) x); else xt=String.valueOf(x);
+				if (y % 1 == 0) yt=Integer.toString((int) y); else yt=String.valueOf(x);
+				
+				if (x!=0 && y==0) label.setText(xt); 
+				if (actionIsDefined && y!=0) label.setText(xt+currentAction+yt);
+				
+						
+					
 				echo();
 				
 			}
@@ -285,5 +305,12 @@ class Form1 extends JFrame{
 		if(label.getText().contains("/")) currentAction="/";
 	}
 	
-	
+	void clear(){
+		x=0;
+		y=0;
+		currentAction="";
+		actionIsDefined=false;
+		yText="";
+		
+	}
 }
