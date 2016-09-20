@@ -56,7 +56,7 @@ class Form1 extends JFrame{
 		panel1.setLayout(new GridLayout(5, 1, 0, 5));
 		
 		
-		panelNubmers1.setLayout(new GridLayout(1, 5, 5, 0));
+		///panelNubmers1.setLayout(new GridLayout(1, 5, 5, 0));
 		
 		panelNubmers1.add(buttonList.get(17));
 		panelNubmers1.add(buttonList.get(16));
