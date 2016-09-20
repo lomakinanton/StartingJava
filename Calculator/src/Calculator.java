@@ -20,7 +20,7 @@ public class Calculator {
 }
 
 class Form1 extends JFrame {
-	/**
+	/*
 	 * 
 	 */
 	private static final long serialVersionUID = -6086054613997912881L;
