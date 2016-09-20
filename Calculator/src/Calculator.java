@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 
 
-public class CalcLomakin {
+public class Calculator {
 	
 	public static void main(String[] args) {
 	Form1 f =	new Form1();
