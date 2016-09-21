@@ -47,14 +47,14 @@ class Form1 extends JFrame {
 		ArrayList<JButton> buttonList = getButtonArray();
 		setButtonActions(buttonList, label);
 
-		JPanel panel0 = new JPanel(); // Общая панель
-		JPanel panel1 = new JPanel(); // это общая панель кнопок
+		JPanel panel0 = new JPanel();
+		JPanel panel1 = new JPanel();
 
-		JPanel panelNubmers1 = new JPanel(); // Для кнопок действий
-		JPanel panelNubmers2 = new JPanel(); // 789
-		JPanel panelNubmers3 = new JPanel(); // 456
-		JPanel panelNubmers4 = new JPanel(); // 123
-		JPanel panelNubmers5 = new JPanel(); // ,0=
+		JPanel panelNubmers1 = new JPanel();
+		JPanel panelNubmers2 = new JPanel();
+		JPanel panelNubmers3 = new JPanel();
+		JPanel panelNubmers4 = new JPanel();
+		JPanel panelNubmers5 = new JPanel();
 
 		panel0.setLayout(new BorderLayout(0, 0));
 		panel1.setLayout(new GridLayout(5, 1, 0, 5));
@@ -100,12 +100,12 @@ class Form1 extends JFrame {
 		setContentPane(panel0);
 		setBounds(150, 150, 300, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle("Калькулятор v2.1");
+		setTitle("РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ v 2.1");
 		setVisible(true);
 	}
 
 	private void setButtonActions(ArrayList<JButton> buttonList, JLabel label) {
-		// Действия для цифровых кнопок
+		// Р”РµР№СЃС‚РІРёСЏ РґР»СЏ С†РёС„СЂРѕРІС‹С… РєРЅРѕРїРѕРє 
 		for (int i = 0; i < 10; i++) {
 			JButton b = buttonList.get(i);
 			b.addActionListener(new ActionListener() {
@@ -124,7 +124,7 @@ class Form1 extends JFrame {
 				}
 			});
 		}
-		// действия для кнопок арифметичесих действий
+		// Р”РµР№СЃС‚РІРёСЏ РґР»СЏ РєРЅРѕРїРѕРє Р°СЂРёС„. РґРµР№СЃС‚РІРёР№
 		for (int i = 10; i < 14; i++) {
 			JButton b = buttonList.get(i);
 			b.addActionListener(new ActionListener() {
@@ -141,7 +141,7 @@ class Form1 extends JFrame {
 				}
 			});
 		}
-		// Запятая
+		// Р—Р°РїСЏС‚Р°СЏ
 		buttonList.get(14).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -153,7 +153,7 @@ class Form1 extends JFrame {
 				}
 			}
 		});
-		// Кнопка "CE"
+		// РљРЅРѕРїРєР° "CE"
 		buttonList.get(15).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -161,7 +161,7 @@ class Form1 extends JFrame {
 				clear();
 			}
 		});
-		// Кнопка "="
+		// РљРЅРѕРїРєР° "="
 		buttonList.get(16).addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -179,7 +179,7 @@ class Form1 extends JFrame {
 						result = x * y;
 					if (currentAction == "+")
 						result = x + y;
-					if (currentAction == "–")
+					if (currentAction == "вЂ“")
 						result = x - y;
 					if (currentAction == "/")
 						result = x / y;
@@ -267,7 +267,7 @@ class Form1 extends JFrame {
 		list.add(new JButton("8"));
 		list.add(new JButton("9"));
 		list.add(new JButton("+")); // 10
-		list.add(new JButton("–")); // 11
+		list.add(new JButton("вЂ“")); // 11
 		list.add(new JButton("*")); // 12
 		list.add(new JButton("/")); // 13
 		list.add(new JButton("."));// 14
@@ -301,8 +301,8 @@ class Form1 extends JFrame {
 			currentAction = "*";
 		if (label.getText().contains("+"))
 			currentAction = "+";
-		if (label.getText().contains("–"))
-			currentAction = "–";
+		if (label.getText().contains("вЂ“"))
+			currentAction = "вЂ“";
 		if (label.getText().contains("/"))
 			currentAction = "/";
 	}
