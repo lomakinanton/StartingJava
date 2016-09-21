@@ -20,14 +20,9 @@ public class Calculator {
 }
 
 class Form1 extends JFrame {
-	/*
-	 * 
-	 */
-	private static final long serialVersionUID = -6086054613997912881L;
 	protected String action = null;
 	protected int first = 0;
 	protected int second = 0;
-
 	private float x = 0;
 	private String yText = "";
 	private float y = 0;
@@ -36,71 +31,59 @@ class Form1 extends JFrame {
 
 	Form1() {
 		JLabel label = new JLabel("0");
-
 		label.setHorizontalAlignment(JLabel.RIGHT);
 		label.setOpaque(true);
 		label.setBackground(new Color(250, 250, 250));
 		label.setForeground(new Color(64, 64, 64));
 		label.setBorder(new EtchedBorder());
 		label.setFont(new Font("Tahoma", Font.PLAIN, 45));
-
 		ArrayList<JButton> buttonList = getButtonArray();
 		setButtonActions(buttonList, label);
-
 		JPanel panel0 = new JPanel();
 		JPanel panel1 = new JPanel();
-
 		JPanel panelNubmers1 = new JPanel();
 		JPanel panelNubmers2 = new JPanel();
 		JPanel panelNubmers3 = new JPanel();
 		JPanel panelNubmers4 = new JPanel();
 		JPanel panelNubmers5 = new JPanel();
-
 		panel0.setLayout(new BorderLayout(0, 0));
 		panel1.setLayout(new GridLayout(5, 1, 0, 5));
-
 		panelNubmers1.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers1.add(buttonList.get(15));
 		panelNubmers1.add(buttonList.get(19));
 		panelNubmers1.add(buttonList.get(18));
 		panelNubmers1.add(buttonList.get(17));
-
 		panelNubmers2.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers2.add(buttonList.get(7));
 		panelNubmers2.add(buttonList.get(8));
 		panelNubmers2.add(buttonList.get(9));
 		panelNubmers2.add(buttonList.get(12));
-
 		panelNubmers3.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers3.add(buttonList.get(4));
 		panelNubmers3.add(buttonList.get(5));
 		panelNubmers3.add(buttonList.get(6));
 		panelNubmers3.add(buttonList.get(13));
-
 		panelNubmers4.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers4.add(buttonList.get(1));
 		panelNubmers4.add(buttonList.get(2));
 		panelNubmers4.add(buttonList.get(3));
 		panelNubmers4.add(buttonList.get(11));
-
 		panelNubmers5.setLayout(new GridLayout(1, 5, 5, 0));
 		panelNubmers5.add(buttonList.get(14));
 		panelNubmers5.add(buttonList.get(0));
 		panelNubmers5.add(buttonList.get(10));
 		panelNubmers5.add(buttonList.get(16));
-
 		panel1.add(panelNubmers1);
 		panel1.add(panelNubmers2);
 		panel1.add(panelNubmers3);
 		panel1.add(panelNubmers4);
 		panel1.add(panelNubmers5);
-
 		panel0.add(label, BorderLayout.NORTH);
 		panel0.add(panel1, BorderLayout.CENTER);
 		setContentPane(panel0);
 		setBounds(150, 150, 300, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle("Калькулятор v 2.1");
+		setTitle("Калькулятор v 2.2");
 		setVisible(true);
 	}
 
