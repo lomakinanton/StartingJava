@@ -21,7 +21,7 @@ public class Lesson1 {
         c.doIt(t2); // Просим вторую команду пройти полосу
         t1.showResults(); // Показываем результаты первой команды
         t2.showResults(); // Показываем результаты второй команды
-        //t1.showStaff();
-        //t2.showStaff();
+        t1.showStaff();
+        t2.showStaff();
     }
 }
