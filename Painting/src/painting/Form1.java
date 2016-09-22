@@ -75,10 +75,15 @@ class myCanvas extends Canvas {
         addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent e) {
-             
+                int _x=e.getX();
+                int _y=e.getY();
+                
+                dots.add(new Dot(_x, _y));
+                               
+                
                 back_g2d.setPaint(Color.red);
                 back_g2d.setStroke(new BasicStroke(5));
-                back_g2d.drawLine(e.getX(), e.getY(), e.getX(), e.getY());
+                back_g2d.drawLine(dots.get(dots.size()-1).x, dots.get(dots.size()-1).y, _x, _y);
 
                 paint(getGraphics());
             }
@@ -93,14 +98,14 @@ class myCanvas extends Canvas {
     @Override
     public void paint(Graphics g) {
         //super.paint(g);
-        /*for (Dot dot : dots) {
+        for (Dot dot : dots) {
             Graphics2D g2 = (Graphics2D) g;
             g2.setColor(Color.red);
             g2.setStroke(new BasicStroke(10));
             g2.drawLine(dot.x, dot.y, dot.x, dot.y);
-        }*/
+        }
 
-        g.drawImage(back, 0, 0, this);
+       // g.drawImage(back, 0, 0, this);
     }
 
     private static class Dot {
