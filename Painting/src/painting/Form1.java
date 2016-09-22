@@ -67,8 +67,7 @@ class myCanvas extends Canvas {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == 1) {
-                    dots.add(new Dot(e.getX(), e.getY()));
-                    paint(getGraphics());
+                    
                 }
             }
         });
@@ -76,10 +75,9 @@ class myCanvas extends Canvas {
         addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent e) {
-
-                dots.add(new Dot(e.getX(), e.getY()));
+             
                 back_g2d.setPaint(Color.red);
-                back_g2d.setStroke(new BasicStroke(10));
+                back_g2d.setStroke(new BasicStroke(5));
                 back_g2d.drawLine(e.getX(), e.getY(), e.getX(), e.getY());
 
                 paint(getGraphics());
