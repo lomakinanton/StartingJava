@@ -1,2 +1,6 @@
 *.xml
 *.mf
+/Calculator/build/
+/Java2-1/build/
+/Painting/build/
+/Snake/build/
