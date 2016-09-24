@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args) {
 
         try {
-            test7;
+            test7();
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
