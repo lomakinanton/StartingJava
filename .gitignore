@@ -1,3 +1,7 @@
 /Calculator/nbproject/private/
 *.class
 *.mf
+/ConwaysGameOfLife/nbproject/private/
+/ConwaysGameOfLife/build/
+/DocGenerator/nbproject/private/
+/DocGenerator/build/
