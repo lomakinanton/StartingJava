@@ -1,7 +1,14 @@
 /Calculator/nbproject/private/
+/Calculator/build/
 *.class
 *.mf
 /ConwaysGameOfLife/nbproject/private/
 /ConwaysGameOfLife/build/
 /DocGenerator/nbproject/private/
 /DocGenerator/build/
+/Painting/nbproject/private/
+/Painting/build/
+/Painting/dist/
+/Java2-1/nbproject/private/
+/Java2-1/build/
+/Java2-1/dist/
