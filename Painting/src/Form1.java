@@ -89,14 +89,14 @@ class myCanvas extends Canvas {
     @Override
     public void paint(Graphics g) {
         //super.paint(g);
-        for (Dot dot : dots) {
-            Graphics2D g2 = (Graphics2D) g;
-            g2.setColor(Color.red);
-            g2.setStroke(new BasicStroke(10));
-            g2.drawLine(0, 0, 500, 500);
-        }
+//        for (Dot dot : dots) {
+//            Graphics2D g2 = (Graphics2D) g;
+//            g2.setColor(Color.red);
+//            g2.setStroke(new BasicStroke(10));
+//            g2.drawLine(0, 0, 500, 500);
+//        }
 
-       // g.drawImage(back, 0, 0, this);
+       g.drawImage(back, 0, 0, this);
     }
 
     private static class Dot {
