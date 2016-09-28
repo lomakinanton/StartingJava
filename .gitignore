@@ -2,6 +2,8 @@
 /Calculator/build/
 *.class
 *.mf
+*.rar
+*.zip
 /ConwaysGameOfLife/nbproject/private/
 /ConwaysGameOfLife/build/
 /DocGenerator/nbproject/private/
