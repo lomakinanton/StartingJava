@@ -1,5 +1,17 @@
 
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Sequencer;
+
+
 public class HFJ {
+
+    public HFJ() {
+    }
+    
 
     
 
@@ -9,7 +21,11 @@ public class HFJ {
     }
 
     private void go() {
-       System.out.println(String.format("%, d", 100000000));
+        try {
+            Sequencer seq = MidiSystem.getSequencer();
+        } catch (MidiUnavailableException ex) {
+            ex.printStackTrace();
+        }
     }
 
    
