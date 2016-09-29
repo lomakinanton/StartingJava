@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -54,10 +55,14 @@ class Phonebook {
     }
 
     void remove(String lastName) {
-        for (PhonebookEntry entry : s) {
+
+        Iterator it = s.iterator();
+        while (it.hasNext()) {
+            PhonebookEntry entry = (PhonebookEntry) it.next();
             if (entry.getLastName().equals(lastName)) {
-                s.remove(entry);
+                it.remove();
             }
+
         }
     }
 }
