@@ -52,10 +52,12 @@ public class Java23HW {
         pb.add(entry3);
         pb.add(entry4);
         pb.add(entry5);
-
+        
+        pb.remove("Lomakin");
+        
         System.out.println("Telephone(s):"+pb.getTelByLastName("Lomakin"));
         System.out.println("Email(s):"+pb.getEmailByLastName("Lomakin"));
 
-        //System.out.println(pb.toString());
+        System.out.println(pb.toString());
     }
 }

@@ -40,11 +40,11 @@ class Phonebook {
         }
         return tel;
     }
-    
-       Set<String> getEmailByLastName(String lastName) {
+
+    Set<String> getEmailByLastName(String lastName) {
         Set<String> email = new HashSet<>();
         int x = 0;
-        
+
         for (PhonebookEntry entry : s) {
             if (entry.getLastName().equals(lastName)) {
                 email.add(entry.getEmail());
@@ -53,12 +53,11 @@ class Phonebook {
         return email;
     }
 
-    /*private Map<String, String> lastNameTel = null;
-    private Map<String, String> lastNameEmail = null;
-    
-    
-    void add(String lastName, String tel, String Email) {
-        lastNameTel.put(lastName, tel);
-        lastNameEmail.put(lastName, Email);
-    }*/
+    void remove(String lastName) {
+        for (PhonebookEntry entry : s) {
+            if (entry.getLastName().equals(lastName)) {
+                s.remove(entry);
+            }
+        }
+    }
 }
