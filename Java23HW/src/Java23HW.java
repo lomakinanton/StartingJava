@@ -11,7 +11,7 @@ public class Java23HW {
 
     public static void main(String[] args) {
         Java23HW hw = new Java23HW();
-        //hw.task1();
+        hw.task1();
         hw.task2();
     }
 
