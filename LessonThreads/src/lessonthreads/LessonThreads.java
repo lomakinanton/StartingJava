@@ -5,17 +5,29 @@ package lessonthreads;
  */
 public class LessonThreads {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        ///Получение главного потока:
+        Thread mainThread = Thread.currentThread();
+        
+        
+        
         for (int i = 0; i < 10; i++) {
-            MyThread mt = new MyThread();
-            mt.start();
+            MyThread myThread = new MyThread();
+            myThread.setPriority(Thread.MAX_PRIORITY);
+            myThread.start();
             
-            Thread run = new Thread(new MyRunnable());
-             run.start();
+
+//            Thread myRunnable = new Thread(new MyRunnable());
+//            myRunnable.setPriority(Thread.MIN_PRIORITY);
+//            myRunnable.start();
+            
+            
+            
+
         }
-        
+
         System.out.println("End!");
-        
+
     }
-    
+
 }
